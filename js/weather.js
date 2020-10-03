@@ -1,10 +1,10 @@
-const API_KEY = "767cb8dd7684576b6e1bfd9dedd24332";
+const WEATHER_API_KEY = "767cb8dd7684576b6e1bfd9dedd24332";
 const WEATHER_API = "https://api.openweathermap.org/data/2.5/weather?";
 
 const weather = document.querySelector(".js-weather .weather__text");
 
 function getWeather(coords) {
-  const API_URL = `${WEATHER_API}lat=${coords.latitude}&lon=${coords.longitude}&appid=${API_KEY}&units=metric`;
+  const API_URL = `${WEATHER_API}lat=${coords.latitude}&lon=${coords.longitude}&appid=${WEATHER_API_KEY}&units=metric`;
   fetch(API_URL)
     .then((response) => response.json())
     .then((json) => {
@@ -34,7 +34,8 @@ function init() {
   if (currentCoords === null) {
     navigator.geolocation.getCurrentPosition(getCoords, getFailCoords);
   } else {
-    getWeather(JSON.parse(currentCoords));
+    const parsedCoords = JSON.parse(currentCoords);
+    getWeather(parsedCoords);
   }
 }
 
