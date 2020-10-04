@@ -3,14 +3,26 @@ const WEATHER_API = "https://api.openweathermap.org/data/2.5/weather?";
 
 const weather = document.querySelector(".js-weather .weather__text");
 
+function paintWeather(weatherObj) {
+  weather.innerHTML = `${Math.floor(weatherObj.temperature)}° @ ${
+    weatherObj.name
+  }`;
+}
+
 function getWeather(coords) {
+  const expirationHour = new Date();
+  expirationHour.setHours(expirationHour.getHours() + 1);
   const API_URL = `${WEATHER_API}lat=${coords.latitude}&lon=${coords.longitude}&appid=${WEATHER_API_KEY}&units=metric`;
   fetch(API_URL)
     .then((response) => response.json())
     .then((json) => {
-      const name = json.name;
-      const temperature = json.main.temp;
-      weather.innerHTML = `${Math.floor(temperature)}° @ ${name}`;
+      const weatherObj = {
+        name: json.name,
+        temperature: json.main.temp,
+        exHour: expirationHour,
+      };
+      localStorage.setItem("weathers", JSON.stringify(weatherObj));
+      paintWeather(weatherObj);
     });
 }
 
@@ -34,8 +46,16 @@ function init() {
   if (currentCoords === null) {
     navigator.geolocation.getCurrentPosition(getCoords, getFailCoords);
   } else {
-    const parsedCoords = JSON.parse(currentCoords);
-    getWeather(parsedCoords);
+    const weatherObj = localStorage.getItem("weathers");
+    const parsedweather = JSON.parse(weatherObj);
+    const todayHour = new Date();
+    const parsedhour = new Date(parsedweather.exHour);
+    if (todayHour > parsedhour) {
+      const parsedCoords = JSON.parse(currentCoords);
+      getWeather(parsedCoords);
+    } else {
+      paintWeather(parsedweather);
+    }
   }
 }
 
