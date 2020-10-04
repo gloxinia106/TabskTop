@@ -1,9 +1,9 @@
 const body = document.querySelector("body");
 const UNSPLASH_API_KEY = "1xiB6J5b4UIT3DpKDGPBbJrMU_RJd2PVysDHqzB5Qeg";
-const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}&query=landscape`;
+const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}&query=landscape&orientation=landscape`;
 
 function paintBackground(bgImg) {
-  body.style.backgroundImage = `url(${bgImg.url})`;
+  body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url(${bgImg.url})`;
 }
 
 function savebackground(fullUrl) {
@@ -22,8 +22,8 @@ function getBackground() {
     .then((response) => response.json())
     .then((json) => {
       const image = json;
-      if (image.urls.full && image.urls) {
-        const fullUrl = image.urls.full;
+      if (image.urls.regular && image.urls) {
+        const fullUrl = image.urls.regular;
         savebackground(fullUrl);
       } else {
         getBackground();
@@ -36,10 +36,15 @@ function init() {
   if (currentImg === null) {
     getBackground();
   } else {
-    // check today
-    // paint img
     const parsedCurrentImg = JSON.parse(currentImg);
-    paintBackground(parsedCurrentImg);
+    const today = new Date();
+    const parsedDate = new Date(parsedCurrentImg.expiration);
+    if (today > parsedDate) {
+      localStorage.removeItem("bg");
+      getBackground();
+    } else {
+      paintBackground(parsedCurrentImg);
+    }
   }
 }
 
