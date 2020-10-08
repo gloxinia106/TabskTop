@@ -31,7 +31,6 @@ function getWeather(coords) {
       };
       localStorage.setItem("weathers", JSON.stringify(weatherObj));
       paintWeather(weatherObj);
-      console.log(json.weather[0].main);
     });
 }
 

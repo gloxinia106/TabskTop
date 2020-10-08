@@ -34,20 +34,19 @@ function makeOptions() {
 
 function handleSearchNumber(event) {
   const currentNum = parseInt(event.target.value);
-  let savedNum = engineObj.number;
-  if (savedNum < currentNum) {
-    for (; savedNum < currentNum; savedNum++) {
+  let objNum = engineObj.number;
+  if (objNum < currentNum) {
+    for (; objNum < currentNum; objNum++) {
       makeOptions();
     }
-    engineObj.number = savedNum;
+    engineObj.number = objNum;
   } else {
-    for (; currentNum < savedNum; savedNum--) {
+    for (; currentNum < objNum; objNum--) {
       deleteOption();
     }
-    engineObj.number = savedNum;
+    engineObj.number = objNum;
   }
   localStorage.setItem("SearchNum", currentNum);
-  console.log(savedNum);
 }
 
 function init() {
