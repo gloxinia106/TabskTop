@@ -2,8 +2,8 @@ const SearchNumber = document.querySelector(".option__searchbar-number");
 const Searchbar = document.querySelector(".option__searchbar");
 
 const engineObj = {
-  value: ["google", "naver", "namuWiki"],
-  text: ["Google", "Naver", "Namu Wiki"],
+  value: ["google", "naver","daum","bing","yahoo","duckduckgo","wikipedia", "namuWiki","github"],
+  text: ["Google", "Naver","Daum","Bing","Yahoo","DuckDuckGo","Wikipedia", "Namu Wiki","GitHub"],
   number: 1,
 };
 
