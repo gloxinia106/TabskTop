@@ -1,11 +1,11 @@
-const firstSelect = document.querySelector(".option__searchbar-engine");
-const selectAll = document.querySelectorAll(".option__searchbar-engine");
+const firstSelect = document.querySelector(".option__searchbar-select");
+const selectAll = document.querySelectorAll(".option__searchbar-select");
 
 let engineValue = ["google"];
 
 function handleHtml() {
   let temporaryValue = [];
-  const engines = document.querySelectorAll(".option__searchbar-engine");
+  const engines = document.querySelectorAll(".option__searchbar-select");
   engines.forEach(function (engine) {
     temporaryValue.push(engine.value);
     engine.addEventListener("change", handleHtml);
@@ -19,7 +19,7 @@ function init() {
   if (localEngines !== null) {
     const localArray = localEngines[0];
     let i = 0;
-    const selects = document.querySelectorAll(".option__searchbar-engine");
+    const selects = document.querySelectorAll(".option__searchbar-select");
     selects.forEach(function (select) {
       select.value = localArray[i];
       i++;

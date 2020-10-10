@@ -1,5 +1,6 @@
 const SearchNumber = document.querySelector(".option__searchbar-number");
-const Searchbar = document.querySelector(".option__searchbar");
+const option = document.querySelector(".option__content");
+
 
 const engineObj = {
   value: ["google", "naver","daum","bing","yahoo","duckduckgo","wikipedia", "namuWiki","github"],
@@ -8,27 +9,29 @@ const engineObj = {
 };
 
 function deleteOption() {
-  Searchbar.removeChild(Searchbar.lastChild);
-  Searchbar.removeChild(Searchbar.lastChild);
+  option.removeChild(option.lastChild);
 }
 
 function makeOptions() {
   const countEngine = document.querySelectorAll(".option__column").length / 2;
+  const optengs = document.createElement("div");
+  optengs.className = "option__engine";
   const columnT = document.createElement("div");
   columnT.className = "option__column";
-  columnT.innerText = `Search bar${countEngine} engine`;
+  columnT.innerText = `Search engine used in the search bar${countEngine}`;
   const columnS = document.createElement("div");
   columnS.className = "option__column";
   const select = document.createElement("select");
-  select.className = "option__searchbar-engine";
+  select.className = "option__searchbar-select";
   select.name = "searchEngine";
   for (let start = 0; start < engineObj.value.length; start++) {
     const optValue = engineObj.value[start];
     const optText = engineObj.text[start];
     select.options[start] = new Option(optText, optValue);
   }
-  Searchbar.appendChild(columnT);
-  Searchbar.appendChild(columnS);
+  option.appendChild(optengs);
+  optengs.appendChild(columnT);
+  optengs.appendChild(columnS);
   columnS.appendChild(select);
 }
 

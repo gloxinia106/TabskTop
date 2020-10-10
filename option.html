@@ -3,35 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/option.css">
     <title>Tabsktob - option</title>
   </head>
   <body>
     <div class="option">
       <h1 class="option__title">Option</h1>
-      <div class="option__searchbar">
-        <div class="option__column">Search bar number</div>
-        <div class="option__column">
-          <select class="option__searchbar-number" name="searchNumber">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+      <div class="option__content">
+        <div class="option__searchbar">
+          <div class="option__column">Search bar number</div>
+          <div class="option__column">
+            <select class="option__searchbar-number" name="searchNumber">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
         </div>
-        <div class="option__column">Search bar1 engine</div>
-        <div class="option__column">
-          <select class="option__searchbar-engine" name="searchEngine">
-            <option value="google">Google</option>
-            <option value="naver">Naver</option>
-            <option value="daum">Daum</option>
-            <option value="bing">Bing</option>
-            <option value="yahoo">Yahoo</option>
-            <option value="duckduckgo">DuckDuckGo</option>
-            <option value="wikipedia">Wikipedia</option>
-            <option value="namuWiki">Namu Wiki</option>
-            <option value="github">GitHub</option>
-          </select>
+        <div class="option__engine">
+          <div class="option__column">Search engine used in the search bar
+          </div>
+          <div class="option__column">
+            <select class="option__searchbar-select" name="searchEngine">
+              <option value="google">Google</option>
+              <option value="naver">Naver</option>
+              <option value="daum">Daum</option>
+              <option value="bing">Bing</option>
+              <option value="yahoo">Yahoo</option>
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="wikipedia">Wikipedia</option>
+              <option value="namuWiki">Namu Wiki</option>
+              <option value="github">GitHub</option>
+            </select>
+          </div>
         </div>
-      </div>
+      </div> 
     </div>
     <script src="js/option.js"></script>
     <script src="js/option-engine.js"></script>
