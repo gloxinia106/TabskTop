@@ -17,18 +17,22 @@ function savebackground(fullUrl) {
   paintBackground(bgObj);
 }
 
+function handleError() {
+  body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url("img/defaultBackground.jpg")`;
+}
+
 function getBackground() {
   fetch(UNSPLASH_URL)
-    .then((response) => response.json())
-    .then((json) => {
-      const image = json;
-      if (image.urls.regular && image.urls) {
-        const fullUrl = image.urls.regular;
-        savebackground(fullUrl);
-      } else {
-        getBackground();
-      }
-    });
+  .then((response) => response.json())
+  .then((json) => {
+    const image = json;
+    if (image.urls.regular && image.urls) {
+      const fullUrl = image.urls.regular;
+      savebackground(fullUrl);
+    } else {
+      getBackground();
+    }
+  }).catch(handleError);
 }
 
 function init() {

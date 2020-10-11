@@ -10,6 +10,7 @@ input {
   box-sizing: border-box;
   border: none;
   border-radius: 40px;
+  font-size: 17px;
 }
 
 input:focus {
@@ -31,29 +32,7 @@ input:focus {
   cursor: pointer;
 }
 
-/*
-.search-naver {
-  border: 4px solid #19ce60;
+.search-btn img {
+  width: 25px;
+  height: 25px;
 }
-
-.search-daum {
-  border: 4px solid #3589f7;
-}
-
-.search-yahoo {
-  border: 4px solid #6a00da;
-}
-
-.search-duckduckgo {
-  border: 4px solid #de5833;
-}
-
-.search-namu {
-  border: 4px solid #008275;
-}
-
-.search-github {
-  border: 4px solid #24292e;
-}
-
-*/

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Tabsktop",
+  "version": "1.0",
+  "description": "Tab desktop extension",
+
+  "browser_action": {
+    "default_popup": "option.html"
+  },
+
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+
+  "permissions": [
+    "activeTab",
+    "geolocation"
+  ]
+}

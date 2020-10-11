@@ -97,9 +97,9 @@ function makeEngine(valueArray){
     searchInput[elemetVal].classList.add(engineObj[value].valueName);
     searchInput[elemetVal].placeholder = `Search by ${engineObj[value].text}`;
     searchbtn[elemetVal].tabIndex = -1
-    const i = document.createElement("i");
-    i.classList.add("fas","fa-search");
-    searchbtn[elemetVal].appendChild(i);
+    const img = document.createElement("img");
+    img.src = "img/search-solid.svg";
+    searchbtn[elemetVal].appendChild(img);
     elemetVal++;
   });
 }
